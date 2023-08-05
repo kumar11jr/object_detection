@@ -16,3 +16,4 @@ while True:
     
     
 webcam.release()
+cv2.destroyAllWindows()
