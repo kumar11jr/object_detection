@@ -1,6 +1,6 @@
 import cv2
 
-# face_detect = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+face_detect = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 smile_detect = cv2.CascadeClassifier('haarcascade_smile.xml')
 
 webcam = cv2.VideoCapture(0)
@@ -13,10 +13,10 @@ while True:
         break
     
     gray_scale = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
-    # faces = face_detect.detectMultiScale(gray_scale)
+    faces = face_detect.detectMultiScale(gray_scale)
     smiles = smile_detect.detectMultiScale(gray_scale,1.1,1)
-    # for (x,y,w,h) in faces:
-    #     cv2.rectangle(frame, (x,y),(w+x,h+y),(0,255,0),2)
+    for (x,y,w,h) in faces:
+        cv2.rectangle(frame, (x,y),(w+x,h+y),(0,255,0),2)
     for (x,y,w,h) in smiles:
         cv2.rectangle(frame, (x,y),(w+x,h+y),(0,255,0),2)
     cv2.imshow('smile_detection',frame)
