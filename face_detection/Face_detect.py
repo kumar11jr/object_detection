@@ -16,5 +16,3 @@ print(face_coordinates)
 cv2.imshow('prabhat face detection',img)
 
 cv2.waitKey()
-
-print("code completed")
