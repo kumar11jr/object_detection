@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Click Alert</title>
+</head>
+<body>
+
+<button id="startButton" onclick="startLis()">Click Me</button>
+
+<script>
+    const startLis = () =>{
+        if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+      
+        recognition.lang = 'en-US';
+      
+        recognition.onresult = (event) => {
+          const res = event.results[0][0].transcript;
+          console.log('You said:', res);
+        };
+      
+        recognition.onerror = event => {
+          console.error('Error:', event.error);
+        };
+
+        recognition.start()
+        console.log('Listening...');
+        
+      } else {
+        console.error('Web Speech API not supported in this browser.');
+      }
+        
+    }
+   
+
+    
+
+  
+</script>
+
+</body>
+</html>
